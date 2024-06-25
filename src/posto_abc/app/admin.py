@@ -19,7 +19,7 @@ class AbastecimentoAdmin(admin.ModelAdmin):
 
     def get_form(self, request, obj=None, change=False, **kwargs):
         if obj:
-            self.readonly_fields.extend(["bomba", "litros"])
+            self.readonly_fields = list(set(self.readonly_fields + ["bomba", "litros"]))
         return super(AbastecimentoAdmin, self).get_form(request, obj, change, **kwargs)
 
 
