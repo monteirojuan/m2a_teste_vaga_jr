@@ -4,8 +4,9 @@ from django.db import transaction
 
 
 def criar_abastecimento(bomba_id, litros):
+    bomba = Bomba.objects.get(pk=bomba_id)
     with transaction.atomic():
-        tanque = Tanque.objects.select_for_update().get(pk=bomba_id)
+        tanque = Tanque.objects.select_for_update().get(pk=bomba.tanque_id)
 
         # Não pode reabastecer mais do que tem no tanque
         if tanque.quantidade_atual < Decimal(litros):
