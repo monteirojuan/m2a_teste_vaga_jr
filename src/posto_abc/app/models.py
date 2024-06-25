@@ -49,4 +49,4 @@ class Abastecimento(models.Model):
         if self.data is None:
             return "Abastecimento"
 
-        return f"Abastecimento {self.data.isoformat()}"
+        return f"Abastecimento: R$ {self.valor_total} ({self.bomba})"
