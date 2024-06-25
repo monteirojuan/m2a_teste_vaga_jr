@@ -22,6 +22,12 @@ class AbastecimentoAdmin(admin.ModelAdmin):
             self.readonly_fields = list(set(self.readonly_fields + ["bomba", "litros"]))
         return super(AbastecimentoAdmin, self).get_form(request, obj, change, **kwargs)
 
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 admin.site.register(Tanque)
 admin.site.register(Bomba)
