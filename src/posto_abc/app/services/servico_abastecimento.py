@@ -1,4 +1,4 @@
-from src.posto_abc.app.models import Bomba, Abastecimento, Tanque
+from posto_abc.app.models import Bomba, Abastecimento, Tanque
 from decimal import Decimal
 from django.db import transaction
 

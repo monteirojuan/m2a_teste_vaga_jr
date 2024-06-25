@@ -1,6 +1,6 @@
 from django.contrib import admin
-from src.posto_abc.app.models import Tanque, Bomba, Abastecimento
-from src.posto_abc.app.services.servico_abastecimento import criar_abastecimento
+from posto_abc.app.models import Tanque, Bomba, Abastecimento
+from posto_abc.app.services.servico_abastecimento import criar_abastecimento
 
 
 @admin.register(Abastecimento)

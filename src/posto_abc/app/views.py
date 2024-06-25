@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Tanque, Bomba, Abastecimento
+from posto_abc.app.models import Tanque, Bomba, Abastecimento
 
 
 def index(request):
