@@ -1,0 +1,41 @@
+- model: app.tanque
+  pk: 1
+  fields:
+    combustivel: GAS
+    capacidade: '1000.00'
+    quantidade_atual: '323.00'
+    preco_litro: '4.75'
+- model: app.tanque
+  pk: 2
+  fields:
+    combustivel: DIE
+    capacidade: '1000.00'
+    quantidade_atual: '750.00'
+    preco_litro: '5.20'
+- model: app.bomba
+  pk: 1
+  fields:
+    tanque: 1
+- model: app.bomba
+  pk: 2
+  fields:
+    tanque: 1
+- model: app.bomba
+  pk: 3
+  fields:
+    tanque: 2
+- model: app.bomba
+  pk: 4
+  fields:
+    tanque: 2
+- model: app.abastecimento
+  pk: 5
+  fields:
+    data: 2024-06-25 01:17:00.805030+00:00
+    bomba: 1
+    combustivel: GAS
+    litros: '27.00'
+    imposto: 13
+    valor_combustivel: '128.25'
+    valor_imposto: '16.67'
+    valor_total: '144.92'
