@@ -50,3 +50,6 @@ class Abastecimento(models.Model):
             return "Abastecimento"
 
         return f"Abastecimento: R$ {self.valor_total} ({self.bomba})"
+
+    def combustivel_str(self):
+        return Combustivel(self.combustivel).label

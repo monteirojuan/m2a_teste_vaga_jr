@@ -1,6 +1,6 @@
 from posto_abc.app.models import Bomba, Abastecimento, Tanque
 from decimal import Decimal
-from django.db import transaction
+from django.db import transaction, models
 
 
 def criar_abastecimento(bomba_id, litros):
@@ -34,3 +34,34 @@ def criar_abastecimento(bomba_id, litros):
         novo_abastecimento.save()
 
         return novo_abastecimento
+
+
+def relatorio_abastecimento(params):  # todo: melhorar exceptions
+    query = Abastecimento.objects.order_by("data")
+
+    if ("mes" in params) and ("ano" in params):
+        query = query.filter(data__month=params["mes"], data__year=params["ano"])
+    elif "ano" in params:
+        query = query.filter(data__year=params["ano"])
+    else:
+        raise Exception
+
+    if "bomba" in params and "tanque" in params:
+        raise Exception
+
+    if "bomba" in params:
+        query = query.filter(bomba_id=params["bomba"])
+    elif "tanque" in params:
+        query = query.filter(bomba_id=params["tanque"])
+
+    lista_abastecimentos = query.all()
+    valor_total = 0
+    if lista_abastecimentos:
+        valor_total = lista_abastecimentos.aggregate(models.Sum("valor_total"))[
+            "valor_total__sum"
+        ]
+
+    return {
+        "lista_abastecimentos": lista_abastecimentos,
+        "valor_total": round(valor_total, 2),
+    }
